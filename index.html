@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="buspayment.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container1">
+        <img src="arrow.png" alt="" width="20" height="20">
+        <img src="Paytm_Logo.png" alt="" width="90" height="50">
+        <span class="help">Help</span>
+    </div>
+
+
+    <div class="container2">
+        <div>
+            <div class="circle"><img src="AMTS_Logo.png" alt=""></div> 
+            <p class="destination">Talvadi(S...<img src="right-arrow.png" height="20px" width="20px" alt=""> Delhi Dar...
+            </p>
+            <p class="subtext">1 Adult Ticket</p>
+            <p class="subtext1">Local·Non-AC·Bus No. 105-D</p>
+            <p class="price"><img src="rupee-indian.png" width="30px" alt="">11<img src="verified.png" width="45px"
+                    height="45px"></p>
+            <p class="confirmation">TICKET BOOKED SUCCESSFULLY</p>
+            <p class="datetime" id="demo1"> 23 Sep 2022, 10:29 PM</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="timecounter">
+            <p class="countertext">Your ticket is valid for</p>
+            <p class="counter" id="demo">02:59:10</p>
+            <div class="hourminutesecond">
+                <span>HOURS</span> <span>MINUTES</span> <span>SECONDS</span>
+            </div>
+            <div class="bluebutton">
+                <span class="view">View your Tickets</span>
+            </div>
+        </div>
+
+        <div class="bluebottom"></div>
+        <div class="darkbottom"></div>
+    </div>
+
+    <div class="container3">
+        <div class="TripDetails">
+            <span>Trip Details</span><span><img src="upl.png" alt="" height="20px" width="20px"></span>
+        </div>
+
+        <div class="operator">
+            <p class="detailtitle">OPERATOR</p>
+            <p class="detailtitle1">AMTS</p>
+
+            <p class="detailtitle">BUS NUMBER</p>
+            <p class="detailtitle1">105-D</p>
+
+            <p class="detailtitle">ROUTE</p>
+            <p class="detailtitle1">13 Stops</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="orderid">
+            <p>Order ID: 19231790518 <span class="bluefont">copy</span></p>
+            <p class="queries">For any queries regarding QR Ticket, please contact AMTS with Order Id.</p>
+        </div>
+    </div>
+
+    <div class="container3">
+        <div class="TripDetails">
+            <span>Payment Details</span><span><img src="upl.png" alt="" height="20px" width="20px"></span>
+        </div>
+        <div class="fare">
+            <span class="detailtitle">FARE BREAKUP</span>
+        </div>
+        <div class="Adult1">
+            <span>1 X Adult</span><span>₹11</span>
+        </div>
+        <div class="divider2"></div>
+        <div class="Adult1">
+            <span>Total</span><span>₹11</span>
+        </div>
+        <div class="divider"></div>
+        <div class="fare paymode">
+            <span class="detailtitle">PAYMENT MODE</span>
+        </div>
+        <div class="UPI">
+            <span>Indian Overseas Bank UPI Linked</span><span>₹11</span>
+        </div>
+        <div class="BankAcc">
+            <span>Bank Account</span>
+        </div>
+        <div class="transid">
+            <span>Transaction ID: 226581367494</span>
+        </div>
+    </div>
+
+    <script>
+
+        var dest = new Date().getTime()+9000000;
+
+        var presentdate = new Date();
+        
+        let month = presentdate.getMonth()+1;
+        let monthname;
+        if(month==1)
+        {
+            monthname="Jan"
+        }
+        else if(month==2)
+        {
+            monthname="Feb";
+        }
+        else if(month==3)
+        {
+            monthname="Mar";
+        }
+        else if(month==4)
+        {
+            monthname="Apr";
+        }
+        else if(month==5)
+        {
+            monthname="May";
+        }
+        else if(month==6)
+        {
+            monthname="Jun";
+        }
+        else if(month==7)
+        {
+            monthname="July";
+        }
+        else if(month==8)
+        {
+            monthname="Aug";
+        }
+        else if(month==9)
+        {
+            monthname="Sep";
+        }
+        else if(month==10)
+        {
+            monthname="Oct";
+        }
+        else if(month==11)
+        {
+            monthname="Nov";
+        }
+        else if(month==12)
+        {
+            monthname="Dec";
+        }
+        var current_date = presentdate.getDate()+" "+monthname+" "+presentdate.getFullYear();
+        
+        var newdelayhour;
+        var newdelayminute;
+        var amOrPm;
+
+        var presenttimedelay = presentdate.getTime();
+        presenttimedelay1 =  presenttimedelay+18000000;
+        var presenttimedelayhour = Math.floor((presenttimedelay1 % (1000*60*60*24)) / (1000*60*60));
+        if(presenttimedelayhour>12)
+        {
+            newdelayhour=presenttimedelayhour % 12
+            amOrPm="PM"
+        }
+        else{
+            newdelayhour=presenttimedelayhour
+            amOrPm="AM"
+        }
+        var presenttimedelayminute = Math.floor((presenttimedelay1 % (1000*60*60)) / (1000*60));
+        if(presenttimedelayminute<10)
+        {
+            newdelayminute = "0"+presenttimedelayminute;
+        }
+        else{
+            newdelayminute=presenttimedelayminute;
+        }
+        document.getElementById("demo1").innerHTML = current_date+" "+newdelayhour+':'+newdelayminute+" "+amOrPm;
+
+        var x = setInterval(function() {
+        var now = new Date().getTime();
+        var diff = dest-now;
+        var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        // console.log(hours);
+        var minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        // console.log(minutes);
+        var seconds = Math.floor((diff%(1000*60))/1000);
+        // console.log(seconds);
+        document.getElementById("demo").innerHTML = "0"+hours + ":" + minutes + ":" + seconds;
+    },1000);
+
+    </script>
+</body>
+
+</html> 
